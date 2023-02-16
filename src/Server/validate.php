@@ -76,7 +76,7 @@ if( $date > date('Y-m-d'))
     $error[]=['type' => 'date','message' => "Date is not valid or dimm current date"];
 
 }
-if( !is_int($category) || $category == -1)
+if(empty($category) || !is_numeric($category)|| $category == '-1')
 {
     $error[]=['type' => 'category','message' => "Please select one category on the List"];
 }
@@ -84,9 +84,6 @@ if(empty($publish) )
 {
     $error[] = ['type' => 'publish_in_index', 'message' =>"No radio buttons were checked."];
 }
-
-
-
 
 header("Content-type: application/json");
 echo json_encode($error);
